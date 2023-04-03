@@ -42,17 +42,13 @@ Route::middleware(['auth', 'user-role:admin'])->group(function(){
     Route::resource('/category', 'CategoryController');
     Route::resource('/product', 'ProductController');
 
-    // Route::get('/variation', [ProductController::class, 'variation']);
     Route::post('/variationType', [ProductController::class, 'variationType']);
 
     Route::post('/upload', [ProductController::class, 'upload']);
 
     Route::post('/upload/remove', [ProductController::class, 'uploadRemove'])->name('upload.remove');
+    Route::post('/delete-image', [ProductController::class, 'deleteImage'])->name('delete.image');
 
-    // Route::get('/variations/{category}', function($category) {
-    //     $variations = Category::find($category)->variations;
-    //     return response()->json($variations);
-    // });
 
 
 });

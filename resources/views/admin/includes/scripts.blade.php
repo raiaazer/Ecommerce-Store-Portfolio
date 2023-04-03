@@ -23,27 +23,78 @@
 <script src="{{ asset('admin_assets/assets/js/custom/apps/ecommerce/catalog/save-product.js') }}"></script>
 <script type="text/javascript">
     $(document).ready(function(){
-        var maxField = 10; //Input fields increment limitation
-        var addButton = $('.add_button'); //Add button selector
-        var wrapper = $('.field_wrapper'); //Input field wrapper
-        var fieldHTML = '<div><a href="javascript:void(0);" class="remove_button"><i class="fa fa-minus p-2 my-2 bg-danger text-light"></i></a><input type="text" name="variation[]" class="form-control p-2" value=""/></div>'; //New input field html
-        var x = 1; //Initial field counter is 1
+        var maxField = 10;
+        var addButton = $('.add_button');
+        var wrapper = $('.field_wrapper');
+        var fieldHTML = '<div><a href="javascript:void(0);" class="remove_button"><i class="fa fa-minus p-2 my-2 bg-danger text-light"></i></a><input type="text" name="variation[]" class="form-control p-2" value=""/></div>';
+        var x = 1;
 
-        //Once add button is clicked
         $(addButton).click(function(){
-            //Check maximum number of input fields
             if(x < maxField){
-                x++; //Increment field counter
-                $(wrapper).append(fieldHTML); //Add field html
+                x++;
+                $(wrapper).append(fieldHTML);
             }
         });
 
-        //Once remove button is clicked
         $(wrapper).on('click', '.remove_button', function(e){
             e.preventDefault();
-            $(this).parent('div').remove(); //Remove field html
-            x--; //Decrement field counter
+            $(this).parent('div').remove();
+            x--;
         });
     });
 </script>
+<script>
+
+    const lightThemeLinks = [
+      document.querySelector('#light-theme'),
+      document.querySelector('#light-theme-datatable'),
+      document.querySelector('#light-theme-global'),
+      document.querySelector('#light-theme-style')
+    ];
+    const darkThemeLinks = [
+      document.querySelector('#dark-theme'),
+      document.querySelector('#dark-theme-datatable'),
+      document.querySelector('#dark-theme-global'),
+      document.querySelector('#dark-theme-style')
+    ];
+
+    function setTheme() {
+      const body = document.querySelector('body');
+      const currentTheme = localStorage.getItem('theme');
+      if (currentTheme === 'dark') {
+        body.classList.add('dark-mode');
+        lightThemeLinks.forEach(link => link.disabled = true);
+        darkThemeLinks.forEach(link => link.disabled = false);
+      } else {
+        body.classList.remove('dark-mode');
+        lightThemeLinks.forEach(link => link.disabled = false);
+        darkThemeLinks.forEach(link => link.disabled = true);
+      }
+    }
+
+    function toggleTheme() {
+      const body = document.querySelector('body');
+      const isDark = body.classList.contains('dark-mode');
+      body.classList.toggle('dark-mode');
+      const sunIcon = document.querySelector('.fonticon-sun');
+      const moonIcon = document.querySelector('.fonticon-moon');
+      if (isDark) {
+        localStorage.setItem('theme', 'light');
+        lightThemeLinks.forEach(link => link.disabled = false);
+        darkThemeLinks.forEach(link => link.disabled = true);
+        sunIcon.classList.remove('d-none');
+        moonIcon.classList.add('d-none');
+      } else {
+        localStorage.setItem('theme', 'dark');
+        lightThemeLinks.forEach(link => link.disabled = true);
+        darkThemeLinks.forEach(link => link.disabled = false);
+        sunIcon.classList.add('d-none');
+        moonIcon.classList.remove('d-none');
+      }
+    }
+
+    window.onload = setTheme;
+</script>
+
+
 @yield('script')

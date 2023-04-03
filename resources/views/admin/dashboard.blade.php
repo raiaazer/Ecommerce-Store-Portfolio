@@ -365,7 +365,7 @@
                                                     <td>
                                                         <div class="symbol symbol-45px me-2">
                                                             <span class="symbol-label">
-                                                                <img src="assets/media/svg/brand-logos/plurk.svg" class="h-50 align-self-center" alt="" />
+                                                                <img src="{{ asset('admin_assets/assets/media/svg/brand-logos/plurk.svg') }}" class="h-50 align-self-center" alt="" />
                                                             </span>
                                                         </div>
                                                     </td>
@@ -394,7 +394,7 @@
                                                     <td>
                                                         <div class="symbol symbol-45px me-2">
                                                             <span class="symbol-label">
-                                                                <img src="assets/media/svg/brand-logos/telegram.svg" class="h-50 align-self-center" alt="" />
+                                                                <img src="{{ asset('admin_assets/assets/media/svg/brand-logos/telegram.svg') }}" class="h-50 align-self-center" alt="" />
                                                             </span>
                                                         </div>
                                                     </td>
@@ -423,7 +423,7 @@
                                                     <td>
                                                         <div class="symbol symbol-45px me-2">
                                                             <span class="symbol-label">
-                                                                <img src="assets/media/svg/brand-logos/vimeo.svg" class="h-50 align-self-center" alt="" />
+                                                                <img src="{{ asset('admin_assets/assets/media/svg/brand-logos/vimeo.svg') }}" class="h-50 align-self-center" alt="" />
                                                             </span>
                                                         </div>
                                                     </td>
@@ -452,7 +452,7 @@
                                                     <td>
                                                         <div class="symbol symbol-45px me-2">
                                                             <span class="symbol-label">
-                                                                <img src="assets/media/svg/brand-logos/bebo.svg" class="h-50 align-self-center" alt="" />
+                                                                <img src="{{ asset('admin_assets/assets/media/svg/brand-logos/bebo.svg') }}" class="h-50 align-self-center" alt="" />
                                                             </span>
                                                         </div>
                                                     </td>
@@ -466,7 +466,7 @@
                                                     </td>
                                                     <td class="text-end">
                                                         <a href="#" class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary">
-                                                            <!--begin::Svg Icon | path: icons/duotune/arrows/arr064.svg-->
+                                                            <!--begin::Svg Icon | path: icons/duotune/arrows/arr064.svg') }}-->
                                                             <span class="svg-icon svg-icon-2">
                                                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                                                                     <rect opacity="0.5" x="18" y="13" width="13" height="2" rx="1" transform="rotate(-180 18 13)" fill="currentColor" />
@@ -481,7 +481,7 @@
                                                     <td>
                                                         <div class="symbol symbol-45px me-2">
                                                             <span class="symbol-label">
-                                                                <img src="assets/media/svg/brand-logos/kickstarter.svg" class="h-50 align-self-center" alt="" />
+                                                                <img src="{{ asset('admin_assets/assets/media/svg/brand-logos/kickstarter.svg') }}" class="h-50 align-self-center" alt="" />
                                                             </span>
                                                         </div>
                                                     </td>
@@ -495,7 +495,7 @@
                                                     </td>
                                                     <td class="text-end">
                                                         <a href="#" class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary">
-                                                            <!--begin::Svg Icon | path: icons/duotune/arrows/arr064.svg-->
+                                                            <!--begin::Svg Icon | path: icons/duotune/arrows/arr064.svg') }}-->
                                                             <span class="svg-icon svg-icon-2">
                                                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                                                                     <rect opacity="0.5" x="18" y="13" width="13" height="2" rx="1" transform="rotate(-180 18 13)" fill="currentColor" />
@@ -536,7 +536,7 @@
                                                     <td>
                                                         <div class="symbol symbol-45px me-2">
                                                             <span class="symbol-label">
-                                                                <img src="assets/media/svg/brand-logos/plurk.svg" class="h-50 align-self-center" alt="" />
+                                                                <img src="{{ asset('admin_assets/assets/media/svg/brand-logos/plurk.svg') }}" class="h-50 align-self-center" alt="" />
                                                             </span>
                                                         </div>
                                                     </td>
@@ -550,7 +550,7 @@
                                                     </td>
                                                     <td class="text-end">
                                                         <a href="#" class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary">
-                                                            <!--begin::Svg Icon | path: icons/duotune/arrows/arr064.svg-->
+                                                            <!--begin::Svg Icon | path: icons/duotune/arrows/arr064.svg') }}-->
                                                             <span class="svg-icon svg-icon-2">
                                                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                                                                     <rect opacity="0.5" x="18" y="13" width="13" height="2" rx="1" transform="rotate(-180 18 13)" fill="currentColor" />
@@ -565,7 +565,7 @@
                                                     <td>
                                                         <div class="symbol symbol-45px me-2">
                                                             <span class="symbol-label">
-                                                                <img src="assets/media/svg/brand-logos/telegram.svg" class="h-50 align-self-center" alt="" />
+                                                                <img src="{{ asset('admin_assets/assets/media/svg/brand-logos/telegram.svg') }}" class="h-50 align-self-center" alt="" />
                                                             </span>
                                                         </div>
                                                     </td>
@@ -579,7 +579,7 @@
                                                     </td>
                                                     <td class="text-end">
                                                         <a href="#" class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary">
-                                                            <!--begin::Svg Icon | path: icons/duotune/arrows/arr064.svg-->
+                                                            <!--begin::Svg Icon | path: icons/duotune/arrows/arr064.svg') }}-->
                                                             <span class="svg-icon svg-icon-2">
                                                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                                                                     <rect opacity="0.5" x="18" y="13" width="13" height="2" rx="1" transform="rotate(-180 18 13)" fill="currentColor" />
@@ -594,7 +594,7 @@
                                                     <td>
                                                         <div class="symbol symbol-45px me-2">
                                                             <span class="symbol-label">
-                                                                <img src="assets/media/svg/brand-logos/bebo.svg" class="h-50 align-self-center" alt="" />
+                                                                <img src="{{ asset('admin_assets/assets/media/svg/brand-logos/bebo.svg') }}" class="h-50 align-self-center" alt="" />
                                                             </span>
                                                         </div>
                                                     </td>
@@ -608,7 +608,7 @@
                                                     </td>
                                                     <td class="text-end">
                                                         <a href="#" class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary">
-                                                            <!--begin::Svg Icon | path: icons/duotune/arrows/arr064.svg-->
+                                                            <!--begin::Svg Icon | path: icons/duotune/arrows/arr064.svg') }}-->
                                                             <span class="svg-icon svg-icon-2">
                                                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                                                                     <rect opacity="0.5" x="18" y="13" width="13" height="2" rx="1" transform="rotate(-180 18 13)" fill="currentColor" />
@@ -649,7 +649,7 @@
                                                     <td>
                                                         <div class="symbol symbol-45px me-2">
                                                             <span class="symbol-label">
-                                                                <img src="assets/media/svg/brand-logos/kickstarter.svg" class="h-50 align-self-center" alt="" />
+                                                                <img src="{{ asset('admin_assets/assets/media/svg/brand-logos/kickstarter.svg') }}" class="h-50 align-self-center" alt="" />
                                                             </span>
                                                         </div>
                                                     </td>
@@ -663,7 +663,7 @@
                                                     </td>
                                                     <td class="text-end">
                                                         <a href="#" class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary">
-                                                            <!--begin::Svg Icon | path: icons/duotune/arrows/arr064.svg-->
+                                                            <!--begin::Svg Icon | path: icons/duotune/arrows/arr064.svg') }}-->
                                                             <span class="svg-icon svg-icon-2">
                                                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                                                                     <rect opacity="0.5" x="18" y="13" width="13" height="2" rx="1" transform="rotate(-180 18 13)" fill="currentColor" />
@@ -678,7 +678,7 @@
                                                     <td>
                                                         <div class="symbol symbol-45px me-2">
                                                             <span class="symbol-label">
-                                                                <img src="assets/media/svg/brand-logos/bebo.svg" class="h-50 align-self-center" alt="" />
+                                                                <img src="{{ asset('admin_assets/assets/media/svg/brand-logos/bebo.svg') }}" class="h-50 align-self-center" alt="" />
                                                             </span>
                                                         </div>
                                                     </td>
@@ -692,7 +692,7 @@
                                                     </td>
                                                     <td class="text-end">
                                                         <a href="#" class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary">
-                                                            <!--begin::Svg Icon | path: icons/duotune/arrows/arr064.svg-->
+                                                            <!--begin::Svg Icon | path: icons/duotune/arrows/arr064.svg') }}-->
                                                             <span class="svg-icon svg-icon-2">
                                                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                                                                     <rect opacity="0.5" x="18" y="13" width="13" height="2" rx="1" transform="rotate(-180 18 13)" fill="currentColor" />
@@ -707,7 +707,7 @@
                                                     <td>
                                                         <div class="symbol symbol-45px me-2">
                                                             <span class="symbol-label">
-                                                                <img src="assets/media/svg/brand-logos/vimeo.svg" class="h-50 align-self-center" alt="" />
+                                                                <img src="{{ asset('admin_assets/assets/media/svg/brand-logos/vimeo.svg') }}" class="h-50 align-self-center" alt="" />
                                                             </span>
                                                         </div>
                                                     </td>
@@ -721,7 +721,7 @@
                                                     </td>
                                                     <td class="text-end">
                                                         <a href="#" class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary">
-                                                            <!--begin::Svg Icon | path: icons/duotune/arrows/arr064.svg-->
+                                                            <!--begin::Svg Icon | path: icons/duotune/arrows/arr064.svg') }}-->
                                                             <span class="svg-icon svg-icon-2">
                                                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                                                                     <rect opacity="0.5" x="18" y="13" width="13" height="2" rx="1" transform="rotate(-180 18 13)" fill="currentColor" />
@@ -736,7 +736,7 @@
                                                     <td>
                                                         <div class="symbol symbol-45px me-2">
                                                             <span class="symbol-label">
-                                                                <img src="assets/media/svg/brand-logos/telegram.svg" class="h-50 align-self-center" alt="" />
+                                                                <img src="{{ asset('admin_assets/assets/media/svg/brand-logos/telegram.svg') }}" class="h-50 align-self-center" alt="" />
                                                             </span>
                                                         </div>
                                                     </td>
@@ -750,7 +750,7 @@
                                                     </td>
                                                     <td class="text-end">
                                                         <a href="#" class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary">
-                                                            <!--begin::Svg Icon | path: icons/duotune/arrows/arr064.svg-->
+                                                            <!--begin::Svg Icon | path: icons/duotune/arrows/arr064.svg') }}-->
                                                             <span class="svg-icon svg-icon-2">
                                                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                                                                     <rect opacity="0.5" x="18" y="13" width="13" height="2" rx="1" transform="rotate(-180 18 13)" fill="currentColor" />
@@ -1236,7 +1236,7 @@
                             <div class="d-flex align-items-sm-center mb-7">
                                 <!--begin::Symbol-->
                                 <div class="symbol symbol-60px symbol-2by3 me-4">
-                                    <div class="symbol-label" style="background-image: url('assets/media/stock/600x400/img-20.jpg')"></div>
+                                    <div class="symbol-label" style="background-image: url('{{ asset('admin_assets/assets/media/stock/600x400/img-20.jpg') }}')"></div>
                                 </div>
                                 <!--end::Symbol-->
                                 <!--begin::Title-->
@@ -1254,7 +1254,7 @@
                             <div class="d-flex align-items-sm-center mb-7">
                                 <!--begin::Symbol-->
                                 <div class="symbol symbol-60px symbol-2by3 me-4">
-                                    <div class="symbol-label" style="background-image: url('assets/media/stock/600x400/img-19.jpg')"></div>
+                                    <div class="symbol-label" style="background-image: url('{{ asset('admin_assets/assets/media/stock/600x400/img-19.jpg') }}')"></div>
                                 </div>
                                 <!--end::Symbol-->
                                 <!--begin::Title-->
@@ -1272,7 +1272,7 @@
                             <div class="d-flex align-items-sm-center mb-7">
                                 <!--begin::Symbol-->
                                 <div class="symbol symbol-60px symbol-2by3 me-4">
-                                    <div class="symbol-label" style="background-image: url('assets/media/stock/600x400/img-25.jpg')"></div>
+                                    <div class="symbol-label" style="background-image: url('{{ asset('admin_assets/assets/media/stock/600x400/img-25.jpg') }}')"></div>
                                 </div>
                                 <!--end::Symbol-->
                                 <!--begin::Title-->
@@ -1290,7 +1290,7 @@
                             <div class="d-flex align-items-sm-center">
                                 <!--begin::Symbol-->
                                 <div class="symbol symbol-60px symbol-2by3 me-4">
-                                    <div class="symbol-label" style="background-image: url('assets/media/stock/600x400/img-24.jpg')"></div>
+                                    <div class="symbol-label" style="background-image: url('{{ asset('admin_assets/assets/media/stock/600x400/img-24.jpg') }}')"></div>
                                 </div>
                                 <!--end::Symbol-->
                                 <!--begin::Title-->

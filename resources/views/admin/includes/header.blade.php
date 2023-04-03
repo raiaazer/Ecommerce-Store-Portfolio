@@ -2,8 +2,8 @@
     <!--begin::Brand-->
     <div class="header-brand">
         <!--begin::Logo-->
-        <a href="index.html">
-            <img alt="Logo" src="assets/media/logos/logo-1-dark.svg" class="h-25px h-lg-25px" />
+        <a href="{{ route('admin.dashboard') }}">
+            <img alt="Logo" src="{{ asset('admin_assets/assets/media/logos/logo-1-dark.svg') }}" class="h-25px h-lg-25px" />
         </a>
         <!--end::Logo-->
         <!--begin::Aside minimize-->
@@ -57,25 +57,10 @@
                 <ul class="breadcrumb breadcrumb-separatorless fw-bold fs-7 pt-1">
                     <!--begin::Item-->
                     <li class="breadcrumb-item text-muted">
-                        <a href="index.html" class="text-muted text-hover-primary">Home</a>
+                        <a href="{{ route('admin.dashboard') }}" class="text-muted text-hover-primary">Home</a>
                     </li>
                     <!--end::Item-->
-                    <!--begin::Item-->
-                    <li class="breadcrumb-item">
-                        <span class="bullet bg-gray-200 w-5px h-2px"></span>
-                    </li>
-                    <!--end::Item-->
-                    <!--begin::Item-->
-                    <li class="breadcrumb-item text-muted">Dashboards</li>
-                    <!--end::Item-->
-                    <!--begin::Item-->
-                    <li class="breadcrumb-item">
-                        <span class="bullet bg-gray-200 w-5px h-2px"></span>
-                    </li>
-                    <!--end::Item-->
-                    <!--begin::Item-->
-                    <li class="breadcrumb-item text-dark">Multipurpose</li>
-                    <!--end::Item-->
+
                 </ul>
                 <!--end::Breadcrumb-->
             </div>
@@ -84,17 +69,7 @@
             <div class="d-flex align-items-stretch overflow-auto pt-3 pt-lg-0">
                 <!--begin::Action wrapper-->
                 <div class="d-flex align-items-center">
-                    <!--begin::Label-->
-                    <span class="fs-7 fw-bolder text-gray-700 pe-4 text-nowrap d-none d-xxl-block">Sort By:</span>
-                    <!--end::Label-->
-                    <!--begin::Select-->
-                    <select class="form-select form-select-sm form-select-solid w-100px w-xxl-125px" data-control="select2" data-placeholder="Latest" data-hide-search="true">
-                        <option value=""></option>
-                        <option value="1" selected="selected">Latest</option>
-                        <option value="2">In Progress</option>
-                        <option value="3">Done</option>
-                    </select>
-                    <!--end::Select-->
+
                 </div>
                 <!--end::Action wrapper-->
                 <!--begin::Action wrapper-->
@@ -137,7 +112,7 @@
                     <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-title-gray-700 menu-icon-muted menu-active-bg menu-state-primary fw-bold py-4 fs-6 w-200px" data-kt-menu="true">
                         <!--begin::Menu item-->
                         <div class="menu-item px-3 my-1">
-                            <a href="index.html" class="menu-link px-3 active">
+                            <a href="#" class="menu-link px-3" id="theme-toggle" onclick="toggleTheme()">
                                 <span class="menu-icon">
                                     <i class="fonticon-sun fs-2"></i>
                                 </span>
@@ -147,7 +122,7 @@
                         <!--end::Menu item-->
                         <!--begin::Menu item-->
                         <div class="menu-item px-3 my-1">
-                            <a href="dark/index.html" class="menu-link px-3">
+                            <a href="#" class="menu-link px-3" id="theme-toggle" onclick="toggleTheme()">
                                 <span class="menu-icon">
                                     <i class="fonticon-moon fs-2"></i>
                                 </span>

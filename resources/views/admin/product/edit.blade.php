@@ -26,8 +26,9 @@
         <!--begin::Container-->
         <div id="kt_content_container" class="container-xxl" data-select2-id="select2-data-kt_content_container">
             <!--begin::Form-->
-            <form action="{{ route('product.update', $product->id) }}" method="POST" enctype="multipart/form-data" class="form d-flex flex-column flex-lg-row fv-plugins-bootstrap5 fv-plugins-framework " data-kt-redirect="products.html" >
+            <form action="{{ route('product.update', $product->id) }}" method="POST" enctype="multipart/form-data" class="form d-flex flex-column flex-lg-row fv-plugins-bootstrap5 fv-plugins-framework " data-kt-redirect="" >
                 @csrf
+                @method('PUT')
                 <!--begin::Aside column-->
                 <div class="d-flex flex-column gap-7 gap-lg-10 w-100 w-lg-300px mb-7 me-lg-10">
                     <!--begin::Thumbnail settings-->
@@ -147,7 +148,10 @@
                             <select class="form-select mb-2 select2-hidden-accessible" name="category_id" id="category-select" data-control="select2" data-placeholder="{{ $product->category->name }}" data-allow-clear="true" multiple="" tabindex="-1" aria-hidden="true">
                                 <option></option>
                                 @foreach ($categories as $category)
-                                <option value="{{ $category->id }}" data-variations="{{ $category->variations }}">{{ $category->name }}</option>
+                                <option value="{{ $category->id }}" data-variations="{{ $category->variations }}" {{ old('category_id', $product->category_id) == $category->id ? 'selected' : '' }}>
+                                    {{ $category->name }}
+                                </option>
+
                                 @endforeach
                             </select>
                             {{-- <span class="select2 select2-container select2-container--bootstrap5" dir="ltr" data-select2-id="select2-data-13-d4q7" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--multiple form-select mb-2" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="-1" aria-disabled="false"><ul class="select2-selection__rendered" id="select2-334k-container"></ul><span class="select2-search select2-search--inline"><textarea class="select2-search__field" type="search" tabindex="0" autocorrect="off" autocapitalize="none" spellcheck="false" role="searchbox" aria-autocomplete="list" autocomplete="off" aria-label="Search" aria-describedby="select2-334k-container" placeholder="Select an option" style="width: 100%;"></textarea></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span> --}}
@@ -167,20 +171,7 @@
                             </span>
                             <!--end::Svg Icon-->Create new category</a>
                             <!--end::Button-->
-                            <!--begin::Input group-->
-                            <!--begin::Label-->
-                            {{-- <label class="form-label d-block">Tags</label> --}}
-                            <!--end::Label-->
-                            <!--begin::Input-->
-                            {{-- <tags class="tagify form-control mb-2" tabindex="-1">
-<tag title="sale" contenteditable="false" spellcheck="false" tabindex="-1" class="tagify__tag tagify--noAnim" value="sale"><x title="" class="tagify__tag__removeBtn" role="button" aria-label="remove tag"></x><div><span class="tagify__tag-text">sale</span></div></tag><span contenteditable="" tabindex="0" data-placeholder="​" aria-placeholder="" class="tagify__input" role="textbox" aria-autocomplete="both" aria-multiline="false"></span>
-​
-</tags><input id="kt_ecommerce_add_product_tags" name="kt_ecommerce_add_product_tags" class="form-control mb-2" value="new, trending, sale"> --}}
-                            <!--end::Input-->
-                            <!--begin::Description-->
-                            {{-- <div class="text-muted fs-7">Add tags to a product.</div> --}}
-                            <!--end::Description-->
-                            <!--end::Input group-->
+
                         </div>
                         <!--end::Card body-->
                     </div>
@@ -266,33 +257,19 @@
                                         <!--begin::Input group-->
                                         <div class="fv-row mb-2 form-group">
                                             <!--begin::Dropzone-->
-                                            {{-- <input name="productImages" type="file" multiple /> --}}
-
                                             <div class="dropzone" id="product-images-dropzone">
-                                                @if($product->product_images)
-                                                <img src="{{ asset('storage/products/'.$product->product_images) }}" height="200px" weight="200px" alt="">
-                                                @endif
-                                                @foreach(session('temp', []) as $file)
-                                                    <img src="{{ url('/temp/'.$file) }}" alt="{{ $file }}">
+                                                @foreach($images as $image)
+                                                {{-- <div class="image-container"> --}}
+                                                    <img src="{{ asset('storage/products/'.$image) }}" class="my-img dz-preview dz-processing dz-image-preview dz-error dz-complete" style="height: 120px; width: 120px; object-fit:cover;" alt="">
+                                                    <a class="btn btn-light btn-sm delete-image-btn" data-image="{{ $image }}" data-id="{{ $product->id }}">X</a>
+                                                {{-- </div> --}}
                                                 @endforeach
 
                                                 <div class="dz-message">
-                                                    Drop product images here or click to upload.
+                                                    Click & Drop New product images here.
                                                 </div>
                                             </div>
-                                            {{-- <div class="dropzone dz-clickable1" id="product-images-dropzone">
-                                                <div class="dz-message needsclick1">
-                                                    <!--begin::Icon-->
-                                                    <i class="bi bi-file-earmark-arrow-up text-primary fs-3x"></i>
-                                                    <!--end::Icon-->
-                                                    <!--begin::Info-->
-                                                    <div class="ms-4">
-                                                        <h3 class="fs-5 fw-bolder text-gray-900 mb-1">Drop files here or click to upload.</h3>
-                                                        <span class="fs-7 fw-bold text-gray-400">Upload up to 10 files</span>
-                                                    </div>
-                                                    <!--end::Info-->
-                                                </div>
-                                            </div> --}}
+
                                             <!--end::Dropzone-->
                                         </div>
                                         <!--end::Input group-->
@@ -352,39 +329,7 @@
                                                 <input type="number" name="coupon" value="{{ $product->coupon }}" class="form-control mb-2" placeholder="Add coupon">
                                             </div>
                                         <div class="fv-plugins-message-container invalid-feedback"></div></div>
-                                        <!--end::Input group-->
-                                        <!--begin::Input group-->
-                                        {{-- <div class="mb-10 fv-row fv-plugins-icon-container">
-                                            <!--begin::Label-->
-                                            <label class="required form-label">Barcode</label>
-                                            <!--end::Label-->
-                                            <!--begin::Input-->
-                                            <input type="text" name="sku" class="form-control mb-2" placeholder="Barcode Number" value="45874521458">
-                                            <!--end::Input-->
-                                            <!--begin::Description-->
-                                            <div class="text-muted fs-7">Enter the product barcode number.</div>
-                                            <!--end::Description-->
-                                        <div class="fv-plugins-message-container invalid-feedback"></div></div> --}}
-                                        <!--end::Input group-->
-                                        <!--begin::Input group-->
 
-                                        <!--end::Input group-->
-                                        <!--begin::Input group-->
-                                        {{-- <div class="fv-row">
-                                            <!--begin::Label-->
-                                            <label class="form-label">Allow Backorders</label>
-                                            <!--end::Label-->
-                                            <!--begin::Input-->
-                                            <div class="form-check form-check-custom form-check-solid mb-2">
-                                                <input class="form-check-input" type="checkbox" value="">
-                                                <label class="form-check-label">Yes</label>
-                                            </div>
-                                            <!--end::Input-->
-                                            <!--begin::Description-->
-                                            <div class="text-muted fs-7">Allow customers to purchase products that are out of stock.</div>
-                                            <!--end::Description-->
-                                        </div> --}}
-                                        <!--end::Input group-->
                                     </div>
                                     <!--end::Card header-->
                                 </div>
@@ -410,7 +355,7 @@
                                                 <div class="row">
                                                     <div class="col-6">
                                                     <select class="form-select form-control select2" name="variation_type" id="variation-select" data-placeholder="Select an option" tabindex="-1" aria-hidden="true">
-                                                        <option value="">{{ $product->variation_type }}</option>
+                                                        <option value="{{ $product->variation_type }}" {{ old('variation_type', $product->variation_type) == $product->variation_type ? 'selected' : '' }}>{{ $product->variation_type }}</option>
 
                                                     </select>
 
@@ -458,6 +403,31 @@
 @endsection
 @section('script')
 <script>
+    $(document).ready(function () {
+        $('.delete-image-btn').on('click', function () {
+            var image = $(this).data('image');
+            var id = $(this).data('id');
+
+            $.ajax({
+                url: '/delete-image',
+                type: 'POST',
+                data: {
+                    _token: '{{ csrf_token() }}',
+                    image: image,
+                    id:id,
+                },
+                success: function (response) {
+                    if (response.success) {
+                        location.reload();
+                    } else {
+                        alert('Failed to delete image');
+                    }
+                }
+            });
+        });
+    });
+</script>
+<script>
     $(document).ready(function() {
         $('#price, #discount').on('input', function() {
             var price = parseFloat($('#price').val());
@@ -482,9 +452,7 @@
             success:function(result) {
                 $('#variation-select').html(result)
             }
-
         });
-
     });
 </script>
 <script>
@@ -540,17 +508,13 @@
     $('.repeater').repeater();
 </script>
 <script>
-    // The DOM element you wish to replace with Tagify
 var input = document.querySelector('input[name=variation]');
 
-// initialize Tagify on the above input node reference
 new Tagify(input)
 </script>
 <script>
-    // The DOM element you wish to replace with Tagify
 var input = document.querySelector('input[name=tags]');
 
-// initialize Tagify on the above input node reference
 new Tagify(input)
 </script>
 <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify"></script>
