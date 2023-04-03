@@ -26,17 +26,14 @@ Route::get('/', [SiteController::class, 'index'])->name('index');
 
 Auth::routes();
 
-// user route
 Route::middleware(['auth', 'user-role:user'])->group(function(){
     Route::get('/home', [HomeController::class, 'userHome'])->name('home');
 });
 
-// editor route
 Route::middleware(['auth', 'user-role:editor'])->group(function(){
     Route::get('/editor/home', [HomeController::class, 'editorHome'])->name('home.editor');
 });
 
-// user admin
 Route::middleware(['auth', 'user-role:admin'])->group(function(){
     Route::get('/admin/dashboard', [HomeController::class, 'adminDashboard'])->name('admin.dashboard');
     Route::resource('/category', 'CategoryController');
