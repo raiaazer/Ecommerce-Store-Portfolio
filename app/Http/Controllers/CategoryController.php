@@ -41,19 +41,15 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required',
+            'status' => 'required',
 
-        // $pro = $request->variation;
-        // for ($i = 0; $i < count($pro); $i++) {
-        //     $vari                = new Variation();
-        //     $vari->name          = $pro[$i];
-        //     $vari->save();
-        // }
+        ]);
 
         $arr = $request->variation;
         $category                  = new Category();
-        // $category->variation_id    = $vari->id;
         $category->variations      = json_encode($arr);
-
         $category->name            = $request->name;
         $category->description     = $request->description;
 

@@ -20,6 +20,7 @@
 @endsection
 @section('body')
 
+
 <div class="content d-flex flex-column flex-column-fluid" id="kt_content" data-select2-id="select2-data-kt_content">
     <!--begin::Post-->
     <div class="post d-flex flex-column-fluid" id="kt_post" data-select2-id="select2-data-kt_post">
@@ -452,6 +453,7 @@
 </div>
 @endsection
 @section('script')
+
 <script>
     $(document).ready(function() {
         $('#price, #discount').on('input', function() {

@@ -125,7 +125,7 @@ class ProductController extends Controller
             'price' => 'required',
             'category_id' => 'required',
             'quantity' => 'required',
-            // 'sku' => 'required|unique:products',
+            'sku' => 'required|unique:products',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
@@ -174,7 +174,7 @@ class ProductController extends Controller
         $product->product_images = implode(',', $imageNames);
         $product->save();
 
-        return redirect()->route('product.index');
+        return redirect()->route('product.index')->with('success', 'Product created successfully!');
 
     }
 
@@ -274,7 +274,7 @@ class ProductController extends Controller
         }
 
         $product->save();
-        return redirect()->route('product.index');
+        return redirect()->route('product.index')->with('success', 'Product updated successfully!');
     }
 
     /**
@@ -295,6 +295,6 @@ class ProductController extends Controller
         }
         $product->delete();
 
-        return redirect()->route('product.index');
+        return redirect()->route('product.index')->with('success', 'Product deleted successfully!');
     }
 }

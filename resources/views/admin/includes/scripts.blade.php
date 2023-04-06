@@ -21,6 +21,8 @@
 <script src="{{ asset('admin_assets/assets/js/custom/utilities/modals/users-search.js') }}"></script>
 
 <script src="{{ asset('admin_assets/assets/js/custom/apps/ecommerce/catalog/save-product.js') }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 <script type="text/javascript">
     $(document).ready(function(){
         var maxField = 10;
@@ -95,6 +97,27 @@
 
     window.onload = setTheme;
 </script>
+@if ($errors->any())
+    @foreach ($errors->all() as $error)
+        <script>
+            toastr.options = {
+            "progressBar" : true,
+            "closeButton" : true,
 
+            }
+            toastr.error("{{ $error }}");
+        </script>
+    @endforeach
+@endif
 
+<script>
+    @if(Session::has('success'))
+        toastr.options = {
+            "progressBar" : true,
+            "closeButton" : true,
+
+        }
+        toastr.success("{{ Session::get('success') }}");
+    @endif
+</script>
 @yield('script')
