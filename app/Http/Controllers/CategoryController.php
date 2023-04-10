@@ -44,7 +44,7 @@ class CategoryController extends Controller
         $request->validate([
             'name' => 'required',
             'status' => 'required',
-
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
         $arr = $request->variation;
@@ -52,7 +52,6 @@ class CategoryController extends Controller
         $category->variations      = json_encode($arr);
         $category->name            = $request->name;
         $category->description     = $request->description;
-
         $category->status          = $request->status;
         $category->tags            = $request->tags;
 
@@ -142,7 +141,9 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         $category = Category::findOrFail($id);
-        Storage::delete($category->image);
+        if($category->image){
+            Storage::delete($category->image);
+        }
 
         $category->delete();
 

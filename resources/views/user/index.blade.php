@@ -59,538 +59,65 @@
         </div>
     </section>
 
-    {{-- <section class="bg-gray banners-section text-center">
-        <div class="container py-2">
-            <div class="row">
-                <div class="col-sm-6 col-lg-3 appear-animate" data-animation-name="fadeInLeftShorter"
-                    data-animation-delay="100" data-animation-duration="1000">
-                    <div class="home-banner banner banner-sm-vw mb-2">
-                        <img src="assets/images/demoes/demo3/banners/home-banner1.jpg"
-                            style="background-color: #ccc;" width="419" height="629" alt="Banner" />
-                        <div class="banner-layer banner-layer-bottom text-left">
-                            <h3 class="m-b-2">Sunglasses Sale</h3>
-                            <h4 class="m-b-3">See all and find yours</h4>
-                            <a href="demo3-shop.html" class="btn  btn-dark" role="button">Shop By Glasses</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-lg-3 appear-animate" data-animation-name="fadeInLeftShorter"
-                    data-animation-delay="300" data-animation-duration="1000">
-                    <div class="home-banner banner banner-sm-vw mb-2">
-                        <img src="assets/images/demoes/demo3/banners/home-banner2.jpg"
-                            style="background-color: #ccc;" width="419" height="629" alt="Banner" />
-                        <div class="banner-layer banner-layer-top ">
-                            <h3 class="mb-0">Cosmetics Trends</h3>
-                            <h4 class="m-b-4">Browse in all our categories</h4>
-                            <a href="demo3-shop.html" class="btn  btn-dark" role="button">Shop By Glasses</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-lg-3 appear-animate" data-animation-name="fadeInLeftShorter"
-                    data-animation-delay="500" data-animation-duration="1000">
-                    <div class="home-banner banner banner-sm-vw mb-2">
-                        <img src="assets/images/demoes/demo3/banners/home-banner3.jpg"
-                            style="background-color: #444;" width="419" height="629" alt="Banner" />
-                        <div class="banner-layer banner-layer-middle">
-                            <h3 class="text-white m-b-1">Fashion Summer Sale</h3>
-                            <h4 class="text-white m-b-4">Browse in all our categories</h4>
-                            <a href="demo3-shop.html" class="btn btn-light bg-white" role="button">Shop By
-                                Fashion</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-lg-3 appear-animate" data-animation-name="fadeInLeftShorter"
-                    data-animation-delay="700" data-animation-duration="1000">
-                    <div class="home-banner banner banner-sm-vw mb-2">
-                        <img src="assets/images/demoes/demo3/banners/home-banner4.jpg"
-                            style="background-color: #ccc;" width="419" height="629" alt="Banner" />
-                        <div class="banner-layer banner-layer-bottom banner-layer-boxed">
-                            <h3 class="m-b-2">UP TO 70% IN ALL BAGS</h3>
-                            <h4>Starting at $99</h4>
-                            <a href="demo3-shop.html" class="btn  btn-dark" role="button">Shop By Bags</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> --}}
-
     <section class="container pb-3 mb-1">
         <h2 class="section-title ls-n-15 text-center pb-2 m-b-4">Popular Products</h2>
 
         <div class="row py-4">
+            @foreach ($products as $product)
             <div class="col-6 col-sm-4 col-md-3 col-xl-2 appear-animate" data-animation-name="fadeIn"
-                data-animation-delay="300" data-animation-duration="1000">
-                <div class="product-default inner-quickview inner-icon">
-                    <figure>
-                        <a href="demo3-product.html">
-                            <img src="assets/images/demoes/demo3/products/product-1.jpg" width="273"
-                                height="273" alt="productr" />
-                        </a>
-                        <div class="label-group">
-                            <div class="product-label label-hot">HOT</div>
-                            <div class="product-label label-sale">-20%</div>
+            data-animation-delay="300" data-animation-duration="1000">
+            <div class="product-default inner-quickview inner-icon">
+                <figure style="width: 177px; height:177px;" >
+                    <a href="demo3-product.html">
+                        @if (!empty($product->product_images))
+                        @php
+                            $images = explode(',', $product->product_images);
+                        @endphp
+
+                        @foreach ($images as $image)
+                            <img src="{{ asset('storage/products/' . trim($image)) }}" width="273"
+                            height="273" alt="productr" style="height:100%; object-fit:contain;" />
+                        @endforeach
+                        @endif
+                    </a>
+                    <div class="label-group">
+                        @if($product->quantity < 20)
+                        <div class="product-label label-hot">
+                            <i class="icon-angle-double-up"></i>
                         </div>
-                        <div class="btn-icon-group">
-                            <a href="#" class="btn-icon btn-add-cart product-type-simple"><i
-                                    class="icon-shopping-cart"></i></a>
+                        @endif
+                        @if($product->discount != 0)
+                        <div class="product-label label-sale">{{$product->discount}}%</div>
+                        @endif
+                    </div>
+                    <div class="btn-icon-group">
+                        <a href="#" class="btn-icon btn-add-cart product-type-simple"><i
+                                class="icon-shopping-cart"></i></a>
+                    </div>
+                    <a href="ajax/product-quick-view.html" class="btn-quickview" title="Quick View">Quick
+                        View</a>
+                </figure>
+                <div class="product-details">
+                    <div class="category-wrap">
+                        <div class="category-list">
+                            <a href="demo3-shop.html" class="product-category">{{ $product->category->name }}</a>
                         </div>
-                        <a href="ajax/product-quick-view.html" class="btn-quickview" title="Quick View">Quick
-                            View</a>
-                    </figure>
-                    <div class="product-details">
-                        <div class="category-wrap">
-                            <div class="category-list">
-                                <a href="demo3-shop.html" class="product-category">category</a>
-                            </div>
-                        </div>
-                        <h3 class="product-title">
-                            <a href="demo3-product.html">Women Shoes</a>
-                        </h3>
-                        <div class="ratings-container">
-                            <div class="product-ratings">
-                                <span class="ratings" style="width:100%"></span><!-- End .ratings -->
-                                <span class="tooltiptext tooltip-top"></span>
-                            </div><!-- End .product-ratings -->
-                        </div><!-- End .product-container -->
-                        <div class="price-box">
-                            <span class="old-price">$59.00</span>
-                            <span class="product-price">$49.00</span>
-                        </div><!-- End .price-box -->
-                    </div><!-- End .product-details -->
-                </div>
+                    </div>
+                    <h3 class="product-title">
+                        <a href="demo3-product.html">{{ $product->name }}</a>
+                    </h3>
+                    <div class="price-box">
+                        @if ($product->discount != 0)
+                            <span class="old-price">${{ $product->price }}</span>
+                            <span class="product-price">${{ $product->price - ($product->price * $product->discount / 100) }}</span>
+                        @else
+                            <span class="product-price">${{ $product->price }}</span>
+                        @endif
+                    </div><!-- End .price-box -->
+                </div><!-- End .product-details -->
             </div>
-            <div class="col-6 col-sm-4 col-md-3 col-xl-2 appear-animate" data-animation-name="fadeIn"
-                data-animation-delay="300" data-animation-duration="1000">
-                <div class="product-default inner-quickview inner-icon">
-                    <figure>
-                        <a href="demo3-product.html">
-                            <img src="assets/images/demoes/demo3/products/product-2.jpg" width="273"
-                                height="273" alt="productr" />
-                            <img src="assets/images/demoes/demo3/products/product-2-2.jpg" width="273"
-                                height="273" alt="productr" />
-                        </a>
-                        <div class="label-group">
-                            <div class="product-label label-hot">HOT</div>
-                            <div class="product-label label-sale">-20%</div>
-                        </div>
-                        <div class="btn-icon-group">
-                            <a href="demo3-product.html" class="btn-icon btn-add-cart"><i
-                                    class="fa fa-arrow-right"></i>
-                            </a>
-                        </div>
-                        <a href="ajax/product-quick-view.html" class="btn-quickview" title="Quick View">Quick
-                            View</a>
-                    </figure>
-                    <div class="product-details">
-                        <div class="category-wrap">
-                            <div class="category-list">
-                                <a href="demo3-shop.html" class="product-category">category</a>
-                            </div>
-                        </div>
-                        <h3 class="product-title">
-                            <a href="demo3-product.html">Porto Transparent Images</a>
-                        </h3>
-                        <div class="ratings-container">
-                            <div class="product-ratings">
-                                <span class="ratings" style="width:100%"></span><!-- End .ratings -->
-                                <span class="tooltiptext tooltip-top"></span>
-                            </div><!-- End .product-ratings -->
-                        </div><!-- End .product-container -->
-                        <div class="price-box">
-                            <span class="old-price">$59.00</span>
-                            <span class="product-price">$49.00</span>
-                        </div><!-- End .price-box -->
-                    </div><!-- End .product-details -->
-                </div>
             </div>
-            <div class="col-6 col-sm-4 col-md-3 col-xl-2 appear-animate" data-animation-name="fadeIn"
-                data-animation-delay="300" data-animation-duration="1000">
-                <div class="product-default inner-quickview inner-icon">
-                    <figure>
-                        <a href="demo3-product.html">
-                            <img src="assets/images/demoes/demo3/products/product-3.jpg" width="273"
-                                height="273" alt="productr" />
-                        </a>
-                        <div class="btn-icon-group">
-                            <a href="#" class="btn-icon btn-add-cart product-type-simple"><i
-                                    class="icon-shopping-cart"></i></a>
-                        </div>
-                        <a href="ajax/product-quick-view.html" class="btn-quickview" title="Quick View">Quick
-                            View</a>
-                    </figure>
-                    <div class="product-details">
-                        <div class="category-wrap">
-                            <div class="category-list">
-                                <a href="demo3-shop.html" class="product-category">category</a>
-                            </div>
-                        </div>
-                        <h3 class="product-title">
-                            <a href="demo3-product.html">Ideapad</a>
-                        </h3>
-                        <div class="ratings-container">
-                            <div class="product-ratings">
-                                <span class="ratings" style="width:100%"></span><!-- End .ratings -->
-                                <span class="tooltiptext tooltip-top"></span>
-                            </div><!-- End .product-ratings -->
-                        </div><!-- End .product-container -->
-                        <div class="price-box">
-                            <span class="old-price">$59.00</span>
-                            <span class="product-price">$49.00</span>
-                        </div><!-- End .price-box -->
-                    </div><!-- End .product-details -->
-                </div>
-            </div>
-            <div class="col-6 col-sm-4 col-md-3 col-xl-2 appear-animate" data-animation-name="fadeIn"
-                data-animation-delay="300" data-animation-duration="1000">
-                <div class="product-default inner-quickview inner-icon">
-                    <figure>
-                        <a href="demo3-product.html">
-                            <img src="assets/images/demoes/demo3/products/product-4.jpg" width="273"
-                                height="273" alt="productr" />
-                            <img src="assets/images/demoes/demo3/products/product-4-2.jpg" width="273"
-                                height="273" alt="productr" />
-                        </a>
-                        <div class="btn-icon-group">
-                            <a href="demo3-product.html" class="btn-icon btn-add-cart"><i
-                                    class="fa fa-arrow-right"></i>
-                            </a>
-                        </div>
-                        <a href="ajax/product-quick-view.html" class="btn-quickview" title="Quick View">Quick
-                            View</a>
-                    </figure>
-                    <div class="product-details">
-                        <div class="category-wrap">
-                            <div class="category-list">
-                                <a href="demo3-shop.html" class="product-category">category</a>
-                            </div>
-                        </div>
-                        <h3 class="product-title">
-                            <a href="demo3-product.html">Black Men Shoes</a>
-                        </h3>
-                        <div class="ratings-container">
-                            <div class="product-ratings">
-                                <span class="ratings" style="width:100%"></span><!-- End .ratings -->
-                                <span class="tooltiptext tooltip-top"></span>
-                            </div><!-- End .product-ratings -->
-                        </div><!-- End .product-container -->
-                        <div class="price-box">
-                            <span class="old-price">$59.00</span>
-                            <span class="product-price">$49.00</span>
-                        </div><!-- End .price-box -->
-                    </div><!-- End .product-details -->
-                </div>
-            </div>
-            <div class="col-6 col-sm-4 col-md-3 col-xl-2 appear-animate" data-animation-name="fadeIn"
-                data-animation-delay="300" data-animation-duration="1000">
-                <div class="product-default inner-quickview inner-icon">
-                    <figure>
-                        <a href="demo3-product.html">
-                            <img src="assets/images/demoes/demo3/products/product-5.jpg" width="273"
-                                height="273" alt="productr" />
-                        </a>
-                        <div class="btn-icon-group">
-                            <a href="#" class="btn-icon btn-add-cart product-type-simple"><i
-                                    class="icon-shopping-cart"></i></a>
-                        </div>
-                        <a href="ajax/product-quick-view.html" class="btn-quickview" title="Quick View">Quick
-                            View</a>
-                    </figure>
-                    <div class="product-details">
-                        <div class="category-wrap">
-                            <div class="category-list">
-                                <a href="demo3-shop.html" class="product-category">category</a>
-                            </div>
-                        </div>
-                        <h3 class="product-title">
-                            <a href="demo3-product.html">Watch</a>
-                        </h3>
-                        <div class="ratings-container">
-                            <div class="product-ratings">
-                                <span class="ratings" style="width:100%"></span><!-- End .ratings -->
-                                <span class="tooltiptext tooltip-top"></span>
-                            </div><!-- End .product-ratings -->
-                        </div><!-- End .product-container -->
-                        <div class="price-box">
-                            <span class="old-price">$59.00</span>
-                            <span class="product-price">$49.00</span>
-                        </div><!-- End .price-box -->
-                    </div><!-- End .product-details -->
-                </div>
-            </div>
-            <div class="col-6 col-sm-4 col-md-3 col-xl-2 appear-animate" data-animation-name="fadeIn"
-                data-animation-delay="300" data-animation-duration="1000">
-                <div class="product-default inner-quickview inner-icon">
-                    <figure>
-                        <a href="demo3-product.html">
-                            <img src="assets/images/demoes/demo3/products/product-6.jpg" width="273"
-                                height="273" alt="productr" />
-                            <img src="assets/images/demoes/demo3/products/product-6-2.jpg" width="273"
-                                height="273" alt="productr" />
-                        </a>
-                        <div class="label-group">
-                            <span class="product-label label-hot">HOT</span>
-                        </div>
-                        <div class="btn-icon-group">
-                            <a href="#" class="btn-icon btn-add-cart product-type-simple"><i
-                                    class="icon-shopping-cart"></i></a>
-                        </div>
-                        <a href="ajax/product-quick-view.html" class="btn-quickview" title="Quick View">Quick
-                            View</a>
-                    </figure>
-                    <div class="product-details">
-                        <div class="category-wrap">
-                            <div class="category-list">
-                                <a href="demo3-shop.html" class="product-category">category</a>
-                            </div>
-                        </div>
-                        <h3 class="product-title">
-                            <a href="demo3-product.html">Woman Dress</a>
-                        </h3>
-                        <div class="ratings-container">
-                            <div class="product-ratings">
-                                <span class="ratings" style="width:100%"></span><!-- End .ratings -->
-                                <span class="tooltiptext tooltip-top"></span>
-                            </div><!-- End .product-ratings -->
-                        </div><!-- End .product-container -->
-                        <div class="price-box">
-                            <span class="old-price">$59.00</span>
-                            <span class="product-price">$49.00</span>
-                        </div><!-- End .price-box -->
-                    </div><!-- End .product-details -->
-                </div>
-            </div>
-            <div class="col-6 col-sm-4 col-md-3 col-xl-2 appear-animate" data-animation-name="fadeIn"
-                data-animation-delay="300" data-animation-duration="1000">
-                <div class="product-default inner-quickview inner-icon">
-                    <figure>
-                        <a href="demo3-product.html">
-                            <img src="assets/images/demoes/demo3/products/product-7.jpg" width="273"
-                                height="273" alt="productr" />
-                        </a>
-                        <div class="btn-icon-group">
-                            <a href="demo3-product.html" class="btn-icon btn-add-cart"><i
-                                    class="fa fa-arrow-right"></i>
-                            </a>
-                        </div>
-                        <a href="ajax/product-quick-view.html" class="btn-quickview" title="Quick View">Quick
-                            View</a>
-                    </figure>
-                    <div class="product-details">
-                        <div class="category-wrap">
-                            <div class="category-list">
-                                <a href="demo3-shop.html" class="product-category">category</a>
-                            </div>
-                        </div>
-                        <h3 class="product-title">
-                            <a href="demo3-product.html">Black Bag</a>
-                        </h3>
-                        <div class="ratings-container">
-                            <div class="product-ratings">
-                                <span class="ratings" style="width:100%"></span><!-- End .ratings -->
-                                <span class="tooltiptext tooltip-top"></span>
-                            </div><!-- End .product-ratings -->
-                        </div><!-- End .product-container -->
-                        <div class="price-box">
-                            <span class="old-price">$59.00</span>
-                            <span class="product-price">$49.00</span>
-                        </div><!-- End .price-box -->
-                    </div><!-- End .product-details -->
-                </div>
-            </div>
-            <div class="col-6 col-sm-4 col-md-3 col-xl-2 appear-animate" data-animation-name="fadeIn"
-                data-animation-delay="300" data-animation-duration="1000">
-                <div class="product-default inner-quickview inner-icon">
-                    <figure>
-                        <a href="demo3-product.html">
-                            <img src="assets/images/demoes/demo3/products/product-8.jpg" width="273"
-                                height="273" alt="productr" />
-                            <img src="assets/images/demoes/demo3/products/product-8-2.jpg" width="273"
-                                height="273" alt="productr" />
-                        </a>
-                        <div class="btn-icon-group">
-                            <a href="#" class="btn-icon btn-add-cart product-type-simple"><i
-                                    class="icon-shopping-cart"></i></a>
-                        </div>
-                        <a href="ajax/product-quick-view.html" class="btn-quickview" title="Quick View">Quick
-                            View</a>
-                    </figure>
-                    <div class="product-details">
-                        <div class="category-wrap">
-                            <div class="category-list">
-                                <a href="demo3-shop.html" class="product-category">category</a>
-                            </div>
-                        </div>
-                        <h3 class="product-title">
-                            <a href="demo3-product.html">Porto Both Sticky Info</a>
-                        </h3>
-                        <div class="ratings-container">
-                            <div class="product-ratings">
-                                <span class="ratings" style="width:100%"></span><!-- End .ratings -->
-                                <span class="tooltiptext tooltip-top"></span>
-                            </div><!-- End .product-ratings -->
-                        </div><!-- End .product-container -->
-                        <div class="price-box">
-                            <span class="old-price">$59.00</span>
-                            <span class="product-price">$49.00</span>
-                        </div><!-- End .price-box -->
-                    </div><!-- End .product-details -->
-                </div>
-            </div>
-            <div class="col-6 col-sm-4 col-md-3 col-xl-2 appear-animate" data-animation-name="fadeIn"
-                data-animation-delay="300" data-animation-duration="1000">
-                <div class="product-default inner-quickview inner-icon">
-                    <figure>
-                        <a href="demo3-product.html">
-                            <img src="assets/images/demoes/demo3/products/product-9.jpg" width="273"
-                                height="273" alt="productr" />
-                            <img src="assets/images/demoes/demo3/products/product-9-2.jpg" width="273"
-                                height="273" alt="productr" />
-                        </a>
-                        <div class="btn-icon-group">
-                            <a href="demo3-product.html" class="btn-icon btn-add-cart"><i
-                                    class="fa fa-arrow-right"></i>
-                            </a>
-                        </div>
-                        <a href="ajax/product-quick-view.html" class="btn-quickview" title="Quick View">Quick
-                            View</a>
-                    </figure>
-                    <div class="product-details">
-                        <div class="category-wrap">
-                            <div class="category-list">
-                                <a href="demo3-shop.html" class="product-category">category</a>
-                            </div>
-                        </div>
-                        <h3 class="product-title">
-                            <a href="demo3-product.html">Glasses</a>
-                        </h3>
-                        <div class="ratings-container">
-                            <div class="product-ratings">
-                                <span class="ratings" style="width:100%"></span><!-- End .ratings -->
-                                <span class="tooltiptext tooltip-top"></span>
-                            </div><!-- End .product-ratings -->
-                        </div><!-- End .product-container -->
-                        <div class="price-box">
-                            <span class="old-price">$59.00</span>
-                            <span class="product-price">$49.00</span>
-                        </div><!-- End .price-box -->
-                    </div><!-- End .product-details -->
-                </div>
-            </div>
-            <div class="col-6 col-sm-4 col-md-3 col-xl-2 appear-animate" data-animation-name="fadeIn"
-                data-animation-delay="300" data-animation-duration="1000">
-                <div class="product-default inner-quickview inner-icon">
-                    <figure>
-                        <a href="demo3-product.html">
-                            <img src="assets/images/demoes/demo3/products/product-10.jpg" width="273"
-                                height="273" alt="productr" />
-                        </a>
-                        <div class="btn-icon-group">
-                            <a href="#" class="btn-icon btn-add-cart product-type-simple"><i
-                                    class="icon-shopping-cart"></i></a>
-                        </div>
-                        <a href="ajax/product-quick-view.html" class="btn-quickview" title="Quick View">Quick
-                            View</a>
-                    </figure>
-                    <div class="product-details">
-                        <div class="category-wrap">
-                            <div class="category-list">
-                                <a href="demo3-shop.html" class="product-category">category</a>
-                            </div>
-                        </div>
-                        <h3 class="product-title">
-                            <a href="demo3-product.html">Black Men Coat</a>
-                        </h3>
-                        <div class="ratings-container">
-                            <div class="product-ratings">
-                                <span class="ratings" style="width:100%"></span><!-- End .ratings -->
-                                <span class="tooltiptext tooltip-top"></span>
-                            </div><!-- End .product-ratings -->
-                        </div><!-- End .product-container -->
-                        <div class="price-box">
-                            <span class="old-price">$59.00</span>
-                            <span class="product-price">$49.00</span>
-                        </div><!-- End .price-box -->
-                    </div><!-- End .product-details -->
-                </div>
-            </div>
-            <div class="col-6 col-sm-4 col-md-3 col-xl-2 appear-animate" data-animation-name="fadeIn"
-                data-animation-delay="300" data-animation-duration="1000">
-                <div class="product-default inner-quickview inner-icon">
-                    <figure>
-                        <a href="demo3-product.html">
-                            <img src="assets/images/demoes/demo3/products/product-11.jpg" width="273"
-                                height="273" alt="productr" />
-                        </a>
-                        <div class="btn-icon-group">
-                            <a href="#" class="btn-icon btn-add-cart product-type-simple"><i
-                                    class="icon-shopping-cart"></i></a>
-                        </div>
-                        <a href="ajax/product-quick-view.html" class="btn-quickview" title="Quick View">Quick
-                            View</a>
-                    </figure>
-                    <div class="product-details">
-                        <div class="category-wrap">
-                            <div class="category-list">
-                                <a href="demo3-shop.html" class="product-category">category</a>
-                            </div>
-                        </div>
-                        <h3 class="product-title">
-                            <a href="demo3-product.html">Girl High Shoes</a>
-                        </h3>
-                        <div class="ratings-container">
-                            <div class="product-ratings">
-                                <span class="ratings" style="width:100%"></span><!-- End .ratings -->
-                                <span class="tooltiptext tooltip-top"></span>
-                            </div><!-- End .product-ratings -->
-                        </div><!-- End .product-container -->
-                        <div class="price-box">
-                            <span class="old-price">$59.00</span>
-                            <span class="product-price">$49.00</span>
-                        </div><!-- End .price-box -->
-                    </div><!-- End .product-details -->
-                </div>
-            </div>
-            <div class="col-6 col-sm-4 col-md-3 col-xl-2 appear-animate" data-animation-name="fadeIn"
-                data-animation-delay="300" data-animation-duration="1000">
-                <div class="product-default inner-quickview inner-icon">
-                    <figure>
-                        <a href="demo3-product.html">
-                            <img src="assets/images/demoes/demo3/products/product-12.jpg" width="273"
-                                height="273" alt="productr" />
-                            <img src="assets/images/demoes/demo3/products/product-12-2.jpg" width="273"
-                                height="273" alt="productr" />
-                        </a>
-                        <div class="btn-icon-group">
-                            <a href="demo3-product.html" class="btn-icon btn-add-cart"><i
-                                    class="fa fa-arrow-right"></i>
-                            </a>
-                        </div>
-                        <a href="ajax/product-quick-view.html" class="btn-quickview" title="Quick View">Quick
-                            View</a>
-                    </figure>
-                    <div class="product-details">
-                        <div class="category-wrap">
-                            <div class="category-list">
-                                <a href="demo3-shop.html" class="product-category">category</a>
-                            </div>
-                        </div>
-                        <h3 class="product-title">
-                            <a href="demo3-product.html">Girl Low Shoes</a>
-                        </h3>
-                        <div class="ratings-container">
-                            <div class="product-ratings">
-                                <span class="ratings" style="width:100%"></span><!-- End .ratings -->
-                                <span class="tooltiptext tooltip-top"></span>
-                            </div><!-- End .product-ratings -->
-                        </div><!-- End .product-container -->
-                        <div class="price-box">
-                            <span class="old-price">$59.00</span>
-                            <span class="product-price">$49.00</span>
-                        </div><!-- End .price-box -->
-                    </div><!-- End .product-details -->
-                </div>
-            </div>
+            @endforeach
         </div>
 
         <hr class="mt-3 mb-6">

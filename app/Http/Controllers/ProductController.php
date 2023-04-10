@@ -126,7 +126,7 @@ class ProductController extends Controller
             'category_id' => 'required',
             'quantity' => 'required',
             'sku' => 'required|unique:products',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
         $product                    = new Product;

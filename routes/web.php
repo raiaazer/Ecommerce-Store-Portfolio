@@ -40,12 +40,11 @@ Route::middleware(['auth', 'user-role:admin'])->group(function(){
     Route::resource('/product', 'ProductController');
 
     Route::post('/variationType', [ProductController::class, 'variationType']);
-
     Route::post('/upload', [ProductController::class, 'upload']);
-
     Route::post('/upload/remove', [ProductController::class, 'uploadRemove'])->name('upload.remove');
     Route::post('/delete-image', [ProductController::class, 'deleteImage'])->name('delete.image');
 
+    Route::get('/site/details', [SiteController::class, 'siteDetails'])->name('site.details');
 
 
 });
