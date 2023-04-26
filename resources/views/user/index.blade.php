@@ -2,22 +2,37 @@
 
 @section('body')
 <main class="main">
+    {{-- <div class="home-slider slide-animate owl-carousel owl-theme show-nav-hover nav-big">
+        @foreach(explode(',', $settings->banner_images) as $image)
+            @php $image = trim($image) @endphp
+            <div class="home-slide banner d-flex align-items-center" style="background-image: url({{ asset('storage/sites/' . $image) }});">
+                <div class="banner-layer appear-animate" data-animation-name="fadeInUpShorter">
+                    <!-- banner content here -->
+                </div><!-- End .banner-layer -->
+            </div><!-- End .home-slide -->
+        @endforeach
+    </div><!-- End .home-slider --> --}}
+
+
     <div class="home-slider slide-animate owl-carousel owl-theme show-nav-hover nav-big">
+        @foreach(explode(',', $settings->banner_images) as $image)
+            @php $image = trim($image) @endphp
         <div class="home-slide home-slide1 banner d-flex align-items-center">
-            <img class="slide-bg" src="assets/images/demoes/demo3/slider/slide1.jpg"
+            <img class="slide-bg" src="{{ asset('storage/sites/' . $image) }}"
                 style="background-color: #ecc;" alt="home banner">
             <div class="banner-layer appear-animate" data-animation-name="fadeInUpShorter">
-                <h2>Winter Fashion Trends</h2>
-                <h3 class="text-uppercase mb-0">Get up to 30% off</h3>
-                <h4 class="m-b-4">on Jackets</h4>
+                {{-- <h2>Winter Fashion Trends</h2>
+                <h3 class="text-uppercase mb-0">Get up to 30% off</h3> --}}
+                <h4 class="m-b-4">{{ $settings->name }}</h4>
 
-                <h5 class="text-uppercase">Starting at<span
-                        class="coupon-sale-text"><sup>$</sup>199<sup>99</sup></span></h5>
+                {{-- <h5 class="text-uppercase">Starting at<span
+                        class="coupon-sale-text"><sup>$</sup>199<sup>99</sup></span></h5>--}}
                 <a href="demo3-shop.html" class="btn btn-dark btn-xl" role="button">Shop Now</a>
             </div><!-- End .banner-layer -->
         </div><!-- End .home-slide -->
+        @endforeach
 
-        <div class="home-slide home-slide2 banner d-flex align-items-center">
+        {{-- <div class="home-slide home-slide2 banner d-flex align-items-center">
             <img class="slide-bg" src="assets/images/demoes/demo3/slider/slide2.jpg"
                 style="background-color: #bfcec9;" alt="home banner">
             <div class="banner-layer appear-animate" data-animation-name="fadeInUpShorter">
@@ -31,7 +46,7 @@
                 <a href="demo3-shop.html" class="btn btn-dark btn-xl btn-icon-right" role="button">Shop Now <i
                         class="fas fa-long-arrow-alt-right"></i></a>
             </div><!-- End .banner-layer -->
-        </div><!-- End .home-slide -->
+        </div><!-- End .home-slide -->--}}
     </div><!-- End .home-slider -->
 
     <section class="container">

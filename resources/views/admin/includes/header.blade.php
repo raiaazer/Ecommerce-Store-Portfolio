@@ -3,8 +3,10 @@
     <div class="header-brand">
         <!--begin::Logo-->
         <a href="{{ route('admin.dashboard') }}">
-            <img alt="Logo" src="{{ asset('admin_assets/assets/media/logos/logo-1-dark.svg') }}" class="h-25px h-lg-25px" />
+            <img alt="Logo" src="{{ asset('storage/sites/' . $settings->logo) }}" class="h-25px h-lg-25px" />
         </a>
+        <a href="javascript:void(0)" class="text-white text-hover-primary fs-6 fw-bold">{{ $settings->name }}</a>
+
         <!--end::Logo-->
         <!--begin::Aside minimize-->
         <div id="kt_aside_toggle" class="btn btn-icon w-auto px-0 btn-active-color-primary aside-minimize" data-kt-toggle="true" data-kt-toggle-state="active" data-kt-toggle-target="body" data-kt-toggle-name="aside-minimize">

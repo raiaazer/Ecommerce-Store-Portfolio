@@ -6,8 +6,8 @@
                     <i class="fas fa-bars"></i>
                 </button>
 
-                <a href="demo3.html" class="logo">
-                    <img src="assets/images/logo-black.png" alt="Porto Logo">
+                <a href="{{ route('index') }}" class="logo">
+                    <img src="{{ asset('storage/sites/' . $settings->logo) }}" alt="Logo" width="50px" height="50px">
                 </a>
 
                 <nav class="main-nav font2">

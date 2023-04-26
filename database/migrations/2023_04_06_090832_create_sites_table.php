@@ -15,8 +15,11 @@ return new class extends Migration
     {
         Schema::create('sites', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('country_id')->nullable();
+            $table->foreign('country_id')->references('id')->on('countries');
             $table->string('banner_image');
             $table->string('logo');
+            $table->string('name');
             $table->string('address');
             $table->string('phone');
             $table->string('email');

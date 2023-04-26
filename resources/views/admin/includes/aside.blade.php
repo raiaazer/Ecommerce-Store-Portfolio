@@ -6,7 +6,7 @@
         <div class="aside-user d-flex align-items-sm-center justify-content-center py-5">
             <!--begin::Symbol-->
             <div class="symbol symbol-50px">
-                <img src="{{ asset('admin_assets/assets/media/avatars/300-1.jpg')}}" alt="" />
+                <img src="{{ asset('storage/sites/' . $settings->logo) }}" alt="" />
             </div>
             <!--end::Symbol-->
             <!--begin::Wrapper-->
@@ -16,15 +16,15 @@
                     <!--begin::Info-->
                     <div class="flex-grow-1 me-2">
                         <!--begin::Username-->
-                        <a href="#" class="text-white text-hover-primary fs-6 fw-bold">Paul Melone</a>
+                        <a href="javascript:void(0)" class="text-white text-hover-primary fs-6 fw-bold">{{ $settings->name }}</a>
                         <!--end::Username-->
                         <!--begin::Description-->
-                        <span class="text-gray-600 fw-bold d-block fs-8 mb-1">Python Dev</span>
+                        <span class="text-gray-600 fw-bold d-block fs-8 mb-1">{{ $settings->email }}</span>
                         <!--end::Description-->
-                        <!--begin::Label-->
+                        {{-- <!--begin::Label-->
                         <div class="d-flex align-items-center text-success fs-9">
                         <span class="bullet bullet-dot bg-success me-1"></span>online</div>
-                        <!--end::Label-->
+                        <!--end::Label--> --}}
                     </div>
                     <!--end::Info-->
                     <!--begin::User menu-->
@@ -42,7 +42,7 @@
                         </a>
                         <!--begin::User account menu-->
                         <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg menu-state-primary fw-bold py-4 fs-6 w-275px" data-kt-menu="true">
-                            <!--begin::Menu item-->
+                            {{-- <!--begin::Menu item-->
                             <div class="menu-item px-3">
                                 <div class="menu-content d-flex align-items-center px-3">
                                     <!--begin::Avatar-->
@@ -60,17 +60,9 @@
                                 </div>
                             </div>
                             <!--end::Menu item-->
-                            <!--begin::Menu separator-->
-                            <div class="separator my-2"></div>
-                            <!--end::Menu separator-->
-                            <!--begin::Menu item-->
-                            <div class="menu-item px-5">
-                                <a href="account/overview.html" class="menu-link px-5">My Profile</a>
-                            </div>
-                            <!--end::Menu item-->
 
                             <!--begin::Menu separator-->
-                            <div class="separator my-2"></div>
+                            <div class="separator my-2"></div> --}}
                             <!--end::Menu separator-->
                             <!--begin::Menu item-->
                             <div class="menu-item px-5" data-kt-menu-trigger="hover" data-kt-menu-placement="right-start">
@@ -127,7 +119,7 @@
                             <!--end::Menu item-->
                             <!--begin::Menu item-->
                             <div class="menu-item px-5 my-1">
-                                <a href="account/settings.html" class="menu-link px-5">Account Settings</a>
+                                <a href="{{ route('site.settings') }}" class="menu-link px-5">Settings</a>
                             </div>
                             <!--end::Menu item-->
                             <!--begin::Menu item-->
@@ -183,6 +175,21 @@
                                 <!--end::Svg Icon-->
                             </span>
                             <span class="menu-title">Dashboard</span>
+                        </a>
+                    </div>
+                    <div class="menu-item">
+                        <a class="menu-link {{ Request::routeIs('site.settings') ? 'active' : '' }}" href="{{ route('site.settings') }}" title="" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right" data-bs-original-title="Build your layout and export HTML for server side integration">
+                            <span class="menu-icon">
+                                <!--begin::Svg Icon | path: icons/duotune/general/gen019.svg-->
+                                <span class="svg-icon svg-icon-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                        <path d="M17.5 11H6.5C4 11 2 9 2 6.5C2 4 4 2 6.5 2H17.5C20 2 22 4 22 6.5C22 9 20 11 17.5 11ZM15 6.5C15 7.9 16.1 9 17.5 9C18.9 9 20 7.9 20 6.5C20 5.1 18.9 4 17.5 4C16.1 4 15 5.1 15 6.5Z" fill="currentColor"></path>
+                                        <path opacity="0.3" d="M17.5 22H6.5C4 22 2 20 2 17.5C2 15 4 13 6.5 13H17.5C20 13 22 15 22 17.5C22 20 20 22 17.5 22ZM4 17.5C4 18.9 5.1 20 6.5 20C7.9 20 9 18.9 9 17.5C9 16.1 7.9 15 6.5 15C5.1 15 4 16.1 4 17.5Z" fill="currentColor"></path>
+                                    </svg>
+                                </span>
+                                <!--end::Svg Icon-->
+                            </span>
+                            <span class="menu-title">Settings</span>
                         </a>
                     </div>
 

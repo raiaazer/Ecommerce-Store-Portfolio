@@ -44,7 +44,12 @@ Route::middleware(['auth', 'user-role:admin'])->group(function(){
     Route::post('/upload/remove', [ProductController::class, 'uploadRemove'])->name('upload.remove');
     Route::post('/delete-image', [ProductController::class, 'deleteImage'])->name('delete.image');
 
-    Route::get('/site/details', [SiteController::class, 'siteDetails'])->name('site.details');
+    Route::get('/site/settings', [SiteController::class, 'SiteSettings'])->name('site.settings');
+    Route::post('/site/store', [SiteController::class, 'store'])->name('site.store');
+    // Route::delete('site/banner-image/{id}', [SiteController::class, 'deleteBannerImage'])->name('site.deleteBannerImage');
 
+    Route::delete('/site/banner-image/{filename}', [SiteController::class, 'deleteBannerImage'])->name('site.deleteBannerImage');
+    // Route::post('/site/update', [SiteController::class, 'update'])->name('site.update');
+    Route::post('/site/{id}/update', [SiteController::class, 'update'])->name('site.update');
 
 });
