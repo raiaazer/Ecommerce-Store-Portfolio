@@ -85,10 +85,8 @@ class SiteController extends Controller
     {
         $site = Site::first();
 
-        // Remove the file from storage
         Storage::delete('public/sites/' . $filename);
 
-        // Remove the file name from the banner images list in the database
         $bannerImages = explode(',', $site->banner_images);
         $key = array_search($filename, $bannerImages);
         if ($key !== false) {
@@ -102,8 +100,6 @@ class SiteController extends Controller
 
     public function update(Request $request, $id)
     {
-        // dump($id);
-        // dd($request->all());
         $validator = \Validator::make($request->all(), [
             'country_id' => 'nullable|exists:countries,id',
             'banner_images.*' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
@@ -127,15 +123,6 @@ class SiteController extends Controller
         $site = Site::findOrFail($id);
         $site->country_id = $request->country_id;
 
-        // Delete banner images if necessary
-        // if ($request->has('delete_banner_images')) {
-        //     $bannerImagesToDelete = $request->input('delete_banner_images');
-        //     foreach ($bannerImagesToDelete as $imageId) {
-        //         $this->deleteBannerImage($site, $imageId);
-        //     }
-        // }
-
-        // Store multiple banner images
         if ($request->hasFile('banner_images')) {
             $bannerImages = $request->file('banner_images');
             $imageNames = [];

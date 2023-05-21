@@ -1,19 +1,8 @@
 @extends('user.layouts.layout')
 
 @section('body')
+
 <main class="main">
-    {{-- <div class="home-slider slide-animate owl-carousel owl-theme show-nav-hover nav-big">
-        @foreach(explode(',', $settings->banner_images) as $image)
-            @php $image = trim($image) @endphp
-            <div class="home-slide banner d-flex align-items-center" style="background-image: url({{ asset('storage/sites/' . $image) }});">
-                <div class="banner-layer appear-animate" data-animation-name="fadeInUpShorter">
-                    <!-- banner content here -->
-                </div><!-- End .banner-layer -->
-            </div><!-- End .home-slide -->
-        @endforeach
-    </div><!-- End .home-slider --> --}}
-
-
     <div class="home-slider slide-animate owl-carousel owl-theme show-nav-hover nav-big">
         @foreach(explode(',', $settings->banner_images) as $image)
             @php $image = trim($image) @endphp
@@ -21,32 +10,13 @@
             <img class="slide-bg" src="{{ asset('storage/sites/' . $image) }}"
                 style="background-color: #ecc;" alt="home banner">
             <div class="banner-layer appear-animate" data-animation-name="fadeInUpShorter">
-                {{-- <h2>Winter Fashion Trends</h2>
-                <h3 class="text-uppercase mb-0">Get up to 30% off</h3> --}}
+
                 <h4 class="m-b-4">{{ $settings->name }}</h4>
 
-                {{-- <h5 class="text-uppercase">Starting at<span
-                        class="coupon-sale-text"><sup>$</sup>199<sup>99</sup></span></h5>--}}
                 <a href="demo3-shop.html" class="btn btn-dark btn-xl" role="button">Shop Now</a>
             </div><!-- End .banner-layer -->
         </div><!-- End .home-slide -->
         @endforeach
-
-        {{-- <div class="home-slide home-slide2 banner d-flex align-items-center">
-            <img class="slide-bg" src="assets/images/demoes/demo3/slider/slide2.jpg"
-                style="background-color: #bfcec9;" alt="home banner">
-            <div class="banner-layer appear-animate" data-animation-name="fadeInUpShorter">
-                <h2>New Season Hats </h2>
-                <h3 class="text-uppercase rotated-upto-text mb-0"><small>Up to</small>20% off</h3>
-
-                <hr class="short-thick-divider mb-sm-0 mb-1">
-
-                <h5 class="text-uppercase d-inline-block mb-2 mb-sm-0">Starting at <span>$<em>19</em>99</span>
-                </h5>
-                <a href="demo3-shop.html" class="btn btn-dark btn-xl btn-icon-right" role="button">Shop Now <i
-                        class="fas fa-long-arrow-alt-right"></i></a>
-            </div><!-- End .banner-layer -->
-        </div><!-- End .home-slide -->--}}
     </div><!-- End .home-slider -->
 
     <section class="container">
@@ -60,7 +30,7 @@
                     <figure>
                         @if ($category->image)
                         <img src="{{ Storage::url($category->image) }}" width="273" height="273"
-                            alt="category" class="resize" style="height: 273px; object-fit:contain;" />
+                            alt="category" class="resize" style="height: 273px; object-fit:cover;" />
                         @endif
                     </figure>
                     <div class="category-content">
@@ -91,22 +61,22 @@
 
                         @foreach ($images as $image)
                             <img src="{{ asset('storage/products/' . trim($image)) }}" width="273"
-                            height="273" alt="productr" style="height:100%; object-fit:contain;" />
+                            height="273" alt="productr" style="height:100%; object-fit:cover;" />
                         @endforeach
                         @endif
                     </a>
                     <div class="label-group">
                         @if($product->quantity < 20)
                         <div class="product-label label-hot">
-                            <i class="icon-angle-double-up"></i>
+                            HOT
                         </div>
                         @endif
                         @if($product->discount != 0)
-                        <div class="product-label label-sale">{{$product->discount}}%</div>
+                        <div class="product-label label-sale">{{$product->discount}}% Off</div>
                         @endif
                     </div>
                     <div class="btn-icon-group">
-                        <a href="#" class="btn-icon btn-add-cart product-type-simple"><i
+                        <a href="{{ route('cart.store', $product->id) }}" class="btn-icon btn-add-cart 1product-type-simple"><i
                                 class="icon-shopping-cart"></i></a>
                     </div>
                     <a href="ajax/product-quick-view.html" class="btn-quickview" title="Quick View">Quick

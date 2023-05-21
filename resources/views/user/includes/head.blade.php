@@ -30,8 +30,10 @@
     <!-- Main CSS File -->
     <link rel="stylesheet" href="{{ user_asset('/css/demo3.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ user_asset('/vendor/fontawesome-free/css/all.min.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ user_asset('/vendor/simple-line-icons/css/simple-line-icons.min.css') }}">
-    <style>
 
-    </style>
+
+    <link rel="stylesheet" type="text/css" href="{{ user_asset('/vendor/simple-line-icons/css/simple-line-icons.min.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    @yield('css')
 </head>

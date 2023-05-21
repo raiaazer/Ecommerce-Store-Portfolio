@@ -200,39 +200,9 @@
         </div>
     </div>
 
-    {{-- <div class="newsletter-popup mfp-hide bg-img" id="newsletter-popup-form"
-        style="background: #f1f1f1 no-repeat center/cover url(assets/images/newsletter_popup_bg.jpg)">
-        <div class="newsletter-popup-content">
-            <img src="assets/images/logo-black.png" alt="Logo" class="logo-newsletter" width="111" height="44">
-            <h2>Subscribe to newsletter</h2>
-
-            <p>
-                Subscribe to the Porto mailing list to receive updates on new
-                arrivals, special offers and our promotions.
-            </p>
-
-            <form action="#">
-                <div class="input-group">
-                    <input type="email" class="form-control" id="newsletter-email" name="newsletter-email"
-                        placeholder="Your email address" required />
-                    <input type="submit" class="btn btn-primary" value="Submit" />
-                </div>
-            </form>
-            <div class="newsletter-subscribe">
-                <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" value="0" id="show-again" />
-                    <label for="show-again" class="custom-control-label">
-                        Don't show this popup again
-                    </label>
-                </div>
-            </div>
-        </div><!-- End .newsletter-popup-content -->
-
-        <button title="Close (Esc)" type="button" class="mfp-close">
-            ×
-        </button>
-    </div><!-- End .newsletter-popup --> --}}
-
+    @php
+    $cartItems = cache()->get('cart', []);
+    @endphp
     <a id="scroll-top" href="#top" title="Top" role="button"><i class="icon-angle-up"></i></a>
 
     <!-- Plugins JS File -->
@@ -243,6 +213,56 @@
 
     <!-- Main JS File -->
     <script src="{{ user_asset('/js/main.min.js') }}"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    @if ($errors->any())
+        @foreach ($errors->all() as $error)
+            <script>
+                toastr.options = {
+                "progressBar" : true,
+                "closeButton" : true,
+
+                }
+                toastr.error("{{ $error }}");
+            </script>
+        @endforeach
+    @endif
+
+    <script>
+        @if(Session::has('success'))
+            toastr.options = {
+                "progressBar" : true,
+                "closeButton" : true,
+
+            }
+            toastr.success("{{ Session::get('success') }}");
+        @endif
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+          // Retrieve the cart items
+          var cartItems = @json($cartItems); // Assuming $cartItems is an array or object containing cart items
+
+          // Get the count of cart items
+          var cartCount = Object.keys(cartItems).length;
+
+          // Update the cart count in the HTML
+          $('#cart-count').text(cartCount);
+        });
+      </script>
+
+    @yield('js')
+    {{-- <script>
+        // Add a click event listener to the link
+        document.querySelector('#remove-form-{{ $item->id }} .btn-remove').addEventListener('click', function (event) {
+            // Prevent the default link behavior
+            event.preventDefault();
+
+            // Submit the form
+            document.querySelector('#remove-form-{{ $item->id }}').submit();
+        });
+    </script> --}}
 </body>
 
 

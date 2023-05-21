@@ -163,7 +163,6 @@ class ProductController extends Controller
             File::move($file->getPathname(), $destination.'/'.$newName);
             $imageNames[] = $newName;
         }
-        // dd($files);
 
         $sessionDriver = Storage::disk('session');
         $files = $sessionDriver->files('temp');
@@ -297,4 +296,6 @@ class ProductController extends Controller
 
         return redirect()->route('product.index')->with('success', 'Product deleted successfully!');
     }
+
+
 }

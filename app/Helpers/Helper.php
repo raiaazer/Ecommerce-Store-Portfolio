@@ -14,4 +14,11 @@
         $cc = "user_assets/assets";
         return asset($cc.$path);
     }
+
+    if (!function_exists('money')) {
+        function money($value)
+        {
+            return '$' . number_format($value, 2);
+        }
+    }
 ?>

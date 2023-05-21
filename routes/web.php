@@ -2,8 +2,15 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\CheckoutController;
+
+
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SiteController;
+use App\Http\Controllers\User\UserCategoryController;
+use App\Http\Controllers\User\UserProductController;
+
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Storage;
@@ -23,11 +30,21 @@ use Illuminate\Support\Facades\Storage;
 //     return view('user.index');
 // });
 Route::get('/', [SiteController::class, 'index'])->name('index');
+Route::resource('/cart', 'CartController');
+Route::get('/cart/store/{id}', [CartController::class, 'store'])->name('cart.store');
+Route::get('/checkout', [CheckoutController::class, 'checkout'])->name('checkout');
+Route::get('/user/category', [UserCategoryController::class, 'category'])->name('user.category');
+Route::get('/user/product', [UserProductController::class, 'product'])->name('user.product');
+
+Route::post('/products/filter', [UserProductController::class, 'filterByPrice'])->name('products.filterByPrice');
+// Route::get('/user/product/filter', [UserProductController::class, 'productsfilter'])->name('user.products.filter');
+
 
 Auth::routes();
 
 Route::middleware(['auth', 'user-role:user'])->group(function(){
     Route::get('/home', [HomeController::class, 'userHome'])->name('home');
+
 });
 
 Route::middleware(['auth', 'user-role:editor'])->group(function(){
